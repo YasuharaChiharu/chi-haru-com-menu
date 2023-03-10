@@ -2,15 +2,23 @@ import { useCursor, Image, Text } from '@react-three/drei'
 import { useFrame } from '@react-three/fiber'
 import { easing } from 'maath'
 import { useRef, useState } from 'react'
-import * as THREE from 'three'
 import getUuid from 'uuid-by-string'
 import { useRoute } from 'wouter'
 
 const GOLDENRATIO = 1.61803398875
 
-const Frame = ({ url, c = new THREE.Color(), ...props }) => {
-  const image = useRef<any>()
-  const frame = useRef<any>()
+type ImageType = {
+  position: [number, number, number]
+  rotation: [number, number, number]
+  url: string
+}
+
+const Frame = (props: ImageType) => {
+  const { url, position, rotation } = props
+  // const c = new THREE.Color()
+
+  const image = useRef<Image>(null)
+  const frame = useRef<mesh>(null)
   const [, params] = useRoute('/item/:id')
   const [hovered, hover] = useState(false)
   const [rnd] = useState(() => Math.random())
@@ -38,7 +46,7 @@ const Frame = ({ url, c = new THREE.Color(), ...props }) => {
     )
   })
   return (
-    <group {...props}>
+    <group position={position} rotation={rotation}>
       <mesh
         name={name}
         onPointerOver={(e) => (e.stopPropagation(), hover(true))}
@@ -67,6 +75,7 @@ const Frame = ({ url, c = new THREE.Color(), ...props }) => {
           ref={image}
           position={[0, 0, 0.7]}
           url={url}
+          alt=""
         />
       </mesh>
       <Text
