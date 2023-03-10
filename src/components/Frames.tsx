@@ -44,13 +44,13 @@ const Frames = ({
       onClick={(e) => (
         e.stopPropagation(),
         setLocation(
-          clicked.current === e.object ? '/' : '/item/' + e.object.name
+          clicked.current === e.object ? '/' : '/item/' + e.object.name,
         )
       )}
       onPointerMissed={() => setLocation('/')}
     >
       {images.map(
-        (props:any) => <Frame key={props.url} {...props} /> /* prettier-ignore */
+        (props:any) => <Frame key={props.url} {...props} /> /* prettier-ignore */,
       )}
     </group>
   )

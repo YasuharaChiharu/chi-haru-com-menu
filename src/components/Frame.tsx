@@ -1,19 +1,14 @@
+import { useCursor, Image, Text } from '@react-three/drei'
+import { useFrame } from '@react-three/fiber'
+import { easing } from 'maath'
 import { useRef, useState } from 'react'
 import * as THREE from 'three'
 import getUuid from 'uuid-by-string'
-import {
-  useCursor,
-  Image,
-  Text,
-} from '@react-three/drei'
-import { useFrame } from '@react-three/fiber'
-import { easing } from 'maath'
-import { useRoute} from 'wouter'
-
+import { useRoute } from 'wouter'
 
 const GOLDENRATIO = 1.61803398875
 
-const Frame = ({url, c = new THREE.Color(), ...props }) => {
+const Frame = ({ url, c = new THREE.Color(), ...props }) => {
   const image = useRef<any>()
   const frame = useRef<any>()
   const [, params] = useRoute('/item/:id')
@@ -33,13 +28,13 @@ const Frame = ({url, c = new THREE.Color(), ...props }) => {
         1,
       ],
       0.1,
-      dt
+      dt,
     )
     easing.dampC(
       frame.current.material.color,
       hovered ? 'orange' : 'white',
       0.1,
-      dt
+      dt,
     )
   })
   return (
@@ -53,7 +48,7 @@ const Frame = ({url, c = new THREE.Color(), ...props }) => {
       >
         <boxGeometry />
         <meshStandardMaterial
-          color='#151515'
+          color="#151515"
           metalness={0.5}
           roughness={0.5}
           envMapIntensity={2}
@@ -76,8 +71,8 @@ const Frame = ({url, c = new THREE.Color(), ...props }) => {
       </mesh>
       <Text
         maxWidth={0.1}
-        anchorX='left'
-        anchorY='top'
+        anchorX="left"
+        anchorY="top"
         position={[0.55, GOLDENRATIO, 0]}
         fontSize={0.025}
       >
@@ -86,4 +81,4 @@ const Frame = ({url, c = new THREE.Color(), ...props }) => {
     </group>
   )
 }
-export default Frame;
+export default Frame
