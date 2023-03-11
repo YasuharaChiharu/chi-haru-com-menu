@@ -2,6 +2,7 @@ import { useCursor, Image, Text } from '@react-three/drei'
 import { useFrame } from '@react-three/fiber'
 import { easing } from 'maath'
 import { useRef, useState } from 'react'
+import { BufferGeometry, Material, Mesh } from 'three'
 import getUuid from 'uuid-by-string'
 import { useRoute } from 'wouter'
 
@@ -11,14 +12,13 @@ type ImageType = {
   position: [number, number, number]
   rotation: [number, number, number]
   url: string
+  page: string
 }
 
 const Frame = (props: ImageType) => {
   const { url, position, rotation } = props
-  // const c = new THREE.Color()
-
-  const image = useRef<Image>(null)
-  const frame = useRef<mesh>(null)
+  const image = useRef<Image>()
+  const frame = useRef<mesh>()
   const [, params] = useRoute('/item/:id')
   const [hovered, hover] = useState(false)
   const [rnd] = useState(() => Math.random())
@@ -39,7 +39,7 @@ const Frame = (props: ImageType) => {
       dt,
     )
     easing.dampC(
-      frame.current.material.color,
+      frame.current?.material.color,
       hovered ? 'orange' : 'white',
       0.1,
       dt,
@@ -66,6 +66,7 @@ const Frame = (props: ImageType) => {
           raycast={() => null}
           scale={[0.9, 0.93, 0.9]}
           position={[0, 0, 0.2]}
+          name={props.page}
         >
           <boxGeometry />
           <meshBasicMaterial toneMapped={false} fog={false} />
