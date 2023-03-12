@@ -28,8 +28,8 @@ const MenuGallary = () => {
     // },
     // Left
     {
-      position: [-1.75, 0, 0.25],
-      rotation: [0, Math.PI / 2.5, 0],
+      position: [-1.0, 0, 2.0],
+      rotation: [0, Math.PI / 4, 0],
       url: pexel(327482),
       page: '/work',
     },
@@ -47,8 +47,8 @@ const MenuGallary = () => {
     },
     // Right
     {
-      position: [1.75, 0, 0.25],
-      rotation: [0, -Math.PI / 2.5, 0],
+      position: [1.0, 0, 2],
+      rotation: [0, -Math.PI / 4, 0],
       url: pexel(227675),
       page: '/contact',
     },
@@ -59,7 +59,7 @@ const MenuGallary = () => {
     //   page: '/top',
     // },
     {
-      position: [2, 0, 2.75],
+      position: [2, 1, 2.75],
       rotation: [0, -Math.PI / 2.5, 0],
       url: pexel(1738986),
       page: '/top',

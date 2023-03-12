@@ -1,8 +1,8 @@
 import { ThreeEvent, useFrame } from '@react-three/fiber'
 import { easing } from 'maath'
-import { useEffect, useRef } from 'react'
+import { useRouter } from 'next/router'
+import { useEffect, useRef, useState } from 'react'
 import * as THREE from 'three'
-import { useLocation, useRoute } from 'wouter'
 import Frame from './Frame'
 
 type ImageType = {
@@ -16,16 +16,17 @@ const Frames = (props: { images: [ImageType] }) => {
   const { images } = props
   const q = new THREE.Quaternion()
   const p = new THREE.Vector3()
-
   const GOLDENRATIO = 1.61803398875
 
   const ref = useRef<group>()
   const clicked = useRef<THREE.Object3D>()
-  const [, params] = useRoute('/item/:id')
+  const id = localStorage.getItem('item_id') || undefined
 
-  const [, setLocation] = useLocation()
+  const [itemSelect, setItemSelect] = useState(false)
+  const router = useRouter()
+
   useEffect(() => {
-    clicked.current = ref.current?.getObjectByName(params?.id ?? 'no-id')
+    clicked.current = ref.current?.getObjectByName(id)
     if (clicked.current) {
       clicked.current.parent?.updateWorldMatrix(true, true)
       clicked.current.parent?.localToWorld(p.set(0, GOLDENRATIO / 2, 1.25))
@@ -42,20 +43,33 @@ const Frames = (props: { images: [ImageType] }) => {
 
   const handleGroupClick = (e: ThreeEvent<MouseEvent>): void => {
     e.stopPropagation()
+
+    console.log('itemSelect:', itemSelect)
+    // if (!itemSelect && localStorage.getItem('item_id')) {
+    //   localStorage.removeItem('item_id')
+    //   setItemSelect(false)
+    // }
+
     if (clicked.current != e.object) {
-      setLocation('/item/' + e.object.name)
-      console.log(e.object.children[0].name)
+      localStorage.setItem('item_id', e.object.name)
+      setItemSelect(true)
     } else {
-      // setLocation(e.object.children[0].name)
-      window.location.href = e.object.children[0].name
+      localStorage.removeItem('item_id')
+      setItemSelect(false)
+      router.push(e.object.children[0].name)
     }
+  }
+
+  const handlePointerMissed = () => {
+    localStorage.removeItem('item_id')
+    setItemSelect(false)
   }
 
   return (
     <group
       ref={ref}
       onClick={handleGroupClick}
-      onPointerMissed={() => setLocation('/')}
+      onPointerMissed={handlePointerMissed}
     >
       {images.map((props: ImageType) => (
         <Frame key={props.url} {...props} />

@@ -2,9 +2,7 @@ import { useCursor, Image, Text } from '@react-three/drei'
 import { useFrame } from '@react-three/fiber'
 import { easing } from 'maath'
 import { useRef, useState } from 'react'
-import { BufferGeometry, Material, Mesh } from 'three'
 import getUuid from 'uuid-by-string'
-import { useRoute } from 'wouter'
 
 const GOLDENRATIO = 1.61803398875
 
@@ -19,11 +17,11 @@ const Frame = (props: ImageType) => {
   const { url, position, rotation } = props
   const image = useRef<Image>()
   const frame = useRef<mesh>()
-  const [, params] = useRoute('/item/:id')
+  const id = localStorage.getItem('item_id') || ''
   const [hovered, hover] = useState(false)
   const [rnd] = useState(() => Math.random())
   const name = getUuid(url)
-  const isActive = params?.id === name
+  const isActive = id === name
   useCursor(hovered)
   useFrame((state, dt) => {
     image.current.material.zoom =
