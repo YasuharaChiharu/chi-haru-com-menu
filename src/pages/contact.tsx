@@ -1,12 +1,14 @@
-import Link from 'next/link'
+import Header from 'components/Header'
+import ReturnBtn from 'components/ReturnBtn'
+import Title from 'components/Title'
 
 const Contact = () => {
   return (
     <div>
-      Contact
-      <Link href="/" replace>
-        <h3 className="BackLink">戻る</h3>
-      </Link>
+      <Header />
+      <Title />
+      <p>Contact</p>
+      <ReturnBtn />
     </div>
   )
 }

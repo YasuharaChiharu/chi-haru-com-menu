@@ -1,26 +1,25 @@
-import Head from 'next/head'
-import Link from 'next/link'
+import Header from 'components/Header'
+import ReturnBtn from 'components/ReturnBtn'
+import Title from 'components/Title'
 
 const Top = () => {
   return (
     <div>
-      <Head>
-        <title>C.H.I - 計算機と人の間に</title>
-        <meta name="description" content="C.H.I WebPage" />
-        <link rel="icon" href="/chi.png" />
-      </Head>
-      <h1> C.H.I </h1>
-      <h2>計算機と人の間に</h2>
+      <Header />
+      <Title />
       <div className="main">
-        <p>
-          ソフトウエアで計算機と人を結びつける(Computer Human
-          Interface)のがC.H.Iの仕事です。
-        </p>
-        <p>PCアプリ, Webアプリ その他何でもご相談ください。</p>
+        <div>
+          C.H.I(Computer Human
+          Interface)は、計算機と人を結びつけるのソフトウエアを作っています。
+        </div>
+
+        <p>設立：平成１８年２月</p>
+        <p>代表：安原知春</p>
+        <div>
+          組み込みファームウェア、Webアプリ、スマホアプリとと様々なソフトウエアを開発しています。
+        </div>
       </div>
-      <Link href="/" replace>
-        <h3 className="BackLink">戻る</h3>
-      </Link>
+      <ReturnBtn />
     </div>
   )
 }

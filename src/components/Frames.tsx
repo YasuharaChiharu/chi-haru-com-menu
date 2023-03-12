@@ -12,13 +12,13 @@ type ImageType = {
   page: string
 }
 
-const Frames = (props: { images: [ImageType] }) => {
+const Frames = (props: { images: ImageType[] }) => {
   const { images } = props
   const q = new THREE.Quaternion()
   const p = new THREE.Vector3()
   const GOLDENRATIO = 1.61803398875
 
-  const ref = useRef<group>()
+  const ref = useRef<any>()
   const clicked = useRef<THREE.Object3D>()
   const id = localStorage.getItem('item_id') || undefined
 
@@ -52,10 +52,10 @@ const Frames = (props: { images: [ImageType] }) => {
 
     if (clicked.current != e.object) {
       localStorage.setItem('item_id', e.object.name)
-      setItemSelect(true)
+      setItemSelect(!itemSelect) //true状態で、隣の枠を選んだときに更新が発生しないので取り合えず...
     } else {
       localStorage.removeItem('item_id')
-      setItemSelect(false)
+      // setItemSelect(false)
       router.push(e.object.children[0].name)
     }
   }

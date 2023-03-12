@@ -15,40 +15,101 @@ a {
   box-sizing: border-box;
 }
 
-H1{
+H1 {
   color: red;
   font-size: 60px;
-  font-family:Arial, Helvetica, sans-serif;
+  font-family: Arial, Helvetica, sans-serif;
   margin: 10px 0px 10px 30px;
 }
 
-H2{
-  color:dimgrey;
-  font-size: 30px;
+H2 {
+  color: dimgrey;
+  font-size: 24px;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
-  margin: 10px 0px 10px 50px;  
+  margin: 10px 0px 10px 50px;
 }
-.main{
+H3 {
+  color: gray;
+  font-size: 30px;
+  font-weight: bold;
+  font-family: 'Courier New', Courier, monospace;
+  margin: 10px 0px 10px 60px;
+}
+.main {
   color: dimgray;
   font-size: 20px;
-  margin: 10px 0px 10px 50px;  
+  margin: 10px 0px 10px 50px;
 }
 
-.BackLink{
+.BackLink {
   width: 100px;
   display: inline-block;
   padding: 10px 16px;
   text-decoration: none;
   border: 1px;
   border-radius: 10%;
-  background:#fff;
+  background: #fff;
   color: black;
   box-shadow: 0px 2px 4px #575;
-  transition: box-shadow .3s;
+  transition: box-shadow 0.3s;
   margin-left: 100px;
   border-radius: 10px;
   text-align: center;
 }
-.BackLink:hover{
+.BackLink:hover {
   box-shadow: 0px 4px 8px #575;
+}
+
+.work {
+  margin: 10px 10px 10px 100px;
+}
+.work-title {
+  font-size: 3rem;
+  margin-top: 3rem;
+  margin-bottom: 3rem;
+  color: #0072c6;
+  font-weight: bold;
+  font-family: 'Courier New', Courier, monospace;
+  border-width: 0 0 1px 0;
+  border-color: blue;
+  border-style: dashed;
+}
+ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  /* display: flex; */
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+li {
+  margin-bottom: 2rem;
+  width: 100%;
+  background-color: #fff;
+  /* padding: 2rem; */
+  border-radius: 5px;
+  /* box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); */
+}
+.work-classify {
+  font-size: 2rem;
+  margin-top: 0;
+  margin-bottom: 2rem;
+  color: #0072c6;
+}
+li ul {
+  margin-top: 1rem;
+  margin-bottom: 0;
+}
+li li {
+  margin-left: 20px;
+  margin-top: 1rem;
+  margin-bottom: 0;
+  font-size: 1.2rem;
+}
+a {
+  color: #0072c6;
+  text-decoration: none;
+}
+a:hover {
+  text-decoration: underline;
 }

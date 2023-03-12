@@ -15,8 +15,8 @@ type ImageType = {
 
 const Frame = (props: ImageType) => {
   const { url, position, rotation } = props
-  const image = useRef<Image>()
-  const frame = useRef<mesh>()
+  const image = useRef<any>()
+  const frame = useRef<any>()
   const id = localStorage.getItem('item_id') || ''
   const [hovered, hover] = useState(false)
   const [rnd] = useState(() => Math.random())
@@ -74,7 +74,6 @@ const Frame = (props: ImageType) => {
           ref={image}
           position={[0, 0, 0.7]}
           url={url}
-          alt=""
         />
       </mesh>
       <Text
