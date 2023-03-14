@@ -25,7 +25,8 @@ const Frame = (props: ImageType) => {
   useCursor(hovered)
   useFrame((state, dt) => {
     image.current.material.zoom =
-      2 + Math.sin(rnd * 10000 + state.clock.elapsedTime / 3) / 2
+      1 + Math.sin(rnd * 10000 + state.clock.elapsedTime / 2) / 4
+
     easing.damp3(
       image.current.scale,
       [

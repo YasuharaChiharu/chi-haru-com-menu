@@ -17,7 +17,7 @@ const MenuGallary = () => {
     {
       position: [0, 0, 1.5],
       rotation: [0, 0, 0],
-      url: '/cat_sake.jpeg',
+      url: '/Top.png',
       page: '/top',
     },
     // Back

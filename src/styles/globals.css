@@ -38,11 +38,11 @@ H3 {
 .main {
   color: dimgray;
   font-size: 20px;
-  margin: 10px 0px 10px 50px;
+  margin: 10px 0px 50px 50px;
 }
 
 .BackLink {
-  width: 100px;
+  width: 200px;
   display: inline-block;
   padding: 10px 16px;
   text-decoration: none;
@@ -112,4 +112,42 @@ a {
 }
 a:hover {
   text-decoration: underline;
+}
+
+.etc-link-frame {
+  padding: 0;
+  margin: 0;
+}
+
+.etc-link {
+  font-size: 24px;
+  font-family: 'Courier New', Courier, monospace;
+  font-weight: bold;
+  margin-left: 30px;
+  margin-bottom: 10px; /* 項目間の余白を設定する */
+}
+
+.etc-link a {
+  text-decoration: none; /* 下線を非表示にする */
+  color: red; /* リンクの色を設定する */
+}
+
+.etc-link a:hover {
+  text-decoration: underline; /* マウスオーバー時に下線を表示する */
+  color: orange;
+}
+
+.name a {
+  color: dimgray;
+  font-size: 22px;
+  font-weight: bold;
+  font-family: serif;
+}
+
+.seal-image {
+  opacity: 0.6;
+  position: 'relative';
+  left: '-4px';
+  top: '10px';
+  transform: 'rotate(-17deg)';
 }
