@@ -25,8 +25,8 @@ const Frame = (props: ImageType) => {
   useCursor(hovered)
   useFrame((state, dt) => {
     image.current.material.zoom =
-      1 + Math.sin(rnd * 10000 + state.clock.elapsedTime / 2) / 4
-
+      2 + Math.sin(rnd * 10000 + state.clock.elapsedTime / 3)
+    image.current.material.opacity = hovered ? 0.7 : 1
     easing.damp3(
       image.current.scale,
       [
@@ -55,7 +55,7 @@ const Frame = (props: ImageType) => {
       >
         <boxGeometry />
         <meshStandardMaterial
-          color="#151515"
+          color='#151515'
           metalness={0.5}
           roughness={0.5}
           envMapIntensity={2}
@@ -79,12 +79,12 @@ const Frame = (props: ImageType) => {
       </mesh>
       <Text
         maxWidth={0.1}
-        anchorX="left"
-        anchorY="top"
+        anchorX='left'
+        anchorY='top'
         position={[0.55, GOLDENRATIO, 0]}
         fontSize={0.025}
       >
-        {name.split('-').join(' ')}
+        {props.page}
       </Text>
     </group>
   )

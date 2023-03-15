@@ -20,32 +20,13 @@ const MenuGallary = () => {
       url: '/Top.png',
       page: '/top',
     },
-    // Back
-    // {
-    //   position: [-0.8, 0, -0.6],
-    //   rotation: [0, 0, 0],
-    //   url: pexel(416430),
-    //   page: '/work',
-    // },
-    // {
-    //   position: [0.8, 0, -0.6],
-    //   rotation: [0, 0, 0],
-    //   url: pexel(310452),
-    //   page: '/top',
-    // },
     // Left
     {
       position: [-1.0, 0, 2.0],
       rotation: [0, Math.PI / 4, 0],
-      url: pexel(327482),
+      url: '/Work.png',
       page: '/work',
     },
-    // {
-    //   position: [-2.15, 0, 1.5],
-    //   rotation: [0, Math.PI / 2.5, 0],
-    //   url: pexel(325185),
-    //   page: '/top',
-    // },
     {
       position: [-2, 0, 2.75],
       rotation: [0, Math.PI / 2.5, 0],
@@ -56,29 +37,23 @@ const MenuGallary = () => {
     {
       position: [1.0, 0, 2],
       rotation: [0, -Math.PI / 4, 0],
-      url: pexel(227675),
-      page: '/contact',
+      url: 'App.png',
+      page: '/iphoneApp',
     },
-    // {
-    //   position: [2.15, 0, 1.5],
-    //   rotation: [0, -Math.PI / 2.5, 0],
-    //   url: pexel(911738),
-    //   page: '/top',
-    // },
     {
       position: [2, 0, 2.75],
       rotation: [0, -Math.PI / 2.5, 0],
-      url: pexel(1738986),
+      url: '/Skills.png',
       page: '/top',
     },
   ]
 
   return (
-    <div style={{ width: '80vw', height: '80vh' }}>
+    <div style={{ width: '80vw', height: '60vh' }}>
       <Canvas dpr={[1, 1.5]} camera={{ fov: 70, position: [0, 2, 15] }}>
         <color attach="background" args={['#AA8']} />
         <fog attach="fog" args={['#AA8', 0, 15]} />
-        <group position={[0, -0.5, 0]}>
+        <group position={[0, -0.5, 0.5]}>
           <Frames images={images} />
           <mesh rotation={[-Math.PI / 2, 0, 0]}>
             <planeGeometry args={[50, 50]} />
