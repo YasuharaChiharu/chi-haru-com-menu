@@ -1,0 +1,64 @@
+.body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+.h1 {
+  text-align: center;
+  margin-top: 50px;
+}
+
+.appList {
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: 50px;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.app {
+  width: 200px;
+  height: 333px;
+  margin: 20px;
+  padding: 20px;
+  border: 1px solid #ccc;
+  text-align: center;
+  border-radius: 10px;
+}
+
+.appImg {
+  width: 100px;
+  height: 100px;
+  margin-bottom: 10px;
+}
+
+.h2 {
+  font-size: 1.2em;
+  margin-top: 0;
+}
+
+.appP {
+  font-size: 0.9em;
+}
+
+.appA {
+  display: inline-block;
+  margin-top: 10px;
+  padding: 5px 10px;
+  background-color: #007aff;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 5px;
+}
+
+.appN {
+  display: inline-block;
+  margin-top: 10px;
+  padding: 5px 10px;
+  background-color: gainsboro;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 5px;
+}

@@ -3,20 +3,13 @@ import { easing } from 'maath'
 import { useRouter } from 'next/router'
 import { useEffect, useRef, useState } from 'react'
 import * as THREE from 'three'
-import Frame from './Frame'
-
-type ImageType = {
-  position: [number, number, number]
-  rotation: [number, number, number]
-  url: string
-  page: string
-}
+import Frame, { GOLDENRATIO } from './Frame'
+import { ImageType } from './MenuGallary'
 
 const Frames = (props: { images: ImageType[] }) => {
   const { images } = props
   const q = new THREE.Quaternion()
   const p = new THREE.Vector3()
-  const GOLDENRATIO = 1.61803398875
 
   const ref = useRef<any>()
   const clicked = useRef<THREE.Object3D>()
@@ -72,7 +65,7 @@ const Frames = (props: { images: ImageType[] }) => {
       onPointerMissed={handlePointerMissed}
     >
       {images.map((props: ImageType) => (
-        <Frame key={props.url} {...props} />
+        <Frame key={props.image} {...props} />
       ))}
     </group>
   )

@@ -3,32 +3,26 @@ import { useFrame } from '@react-three/fiber'
 import { easing } from 'maath'
 import { useRef, useState } from 'react'
 import getUuid from 'uuid-by-string'
+import { ImageType } from './MenuGallary'
 
-const GOLDENRATIO = 1.61803398875
-
-type ImageType = {
-  position: [number, number, number]
-  rotation: [number, number, number]
-  url: string
-  page: string
-}
+export const GOLDENRATIO = 1.61803398875
 
 const Frame = (props: ImageType) => {
-  const { url, position, rotation } = props
-  const image = useRef<any>()
+  const { image, position, rotation } = props
+  const imageRef = useRef<any>()
   const frame = useRef<any>()
   const id = localStorage.getItem('item_id') || ''
   const [hovered, hover] = useState(false)
   const [rnd] = useState(() => Math.random())
-  const name = getUuid(url)
+  const name = getUuid(image)
   const isActive = id === name
   useCursor(hovered)
   useFrame((state, dt) => {
-    image.current.material.zoom =
+    imageRef.current.material.zoom =
       2 + Math.sin(rnd * 10000 + state.clock.elapsedTime / 3)
-    image.current.material.opacity = hovered ? 0.7 : 1
+    imageRef.current.material.opacity = hovered ? 0.7 : 1
     easing.damp3(
-      image.current.scale,
+      imageRef.current.scale,
       [
         0.85 * (!isActive && hovered ? 0.85 : 1),
         0.9 * (!isActive && hovered ? 0.905 : 1),
@@ -55,7 +49,7 @@ const Frame = (props: ImageType) => {
       >
         <boxGeometry />
         <meshStandardMaterial
-          color='#151515'
+          color="#151515"
           metalness={0.5}
           roughness={0.5}
           envMapIntensity={2}
@@ -72,15 +66,15 @@ const Frame = (props: ImageType) => {
         </mesh>
         <Image
           raycast={() => null}
-          ref={image}
+          ref={imageRef}
           position={[0, 0, 0.7]}
-          url={url}
+          url={image}
         />
       </mesh>
       <Text
         maxWidth={0.1}
-        anchorX='left'
-        anchorY='top'
+        anchorX="left"
+        anchorY="top"
         position={[0.55, GOLDENRATIO, 0]}
         fontSize={0.025}
       >

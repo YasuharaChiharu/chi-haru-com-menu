@@ -1,50 +1,54 @@
 import { Environment, MeshReflectorMaterial } from '@react-three/drei'
 import { Canvas } from '@react-three/fiber'
+import { useEffect, useState } from 'react'
 import Frames from './Frames'
 
-type ImageType = {
+export type ImageType = {
   position: [number, number, number]
   rotation: [number, number, number]
-  url: string
+  image: string
   page: string
 }
 
 const MenuGallary = () => {
-  const pexel = (id: number) =>
-    `https://images.pexels.com/photos/${id}/pexels-photo-${id}.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260`
+  const [menuPanels, setMenuPanels] = useState<ImageType[]>([])
+  useEffect(() => {
+    setMenuPanels(images)
+  }, [])
+
   const images: ImageType[] = [
     // Front
     {
       position: [0, 0, 1.5],
       rotation: [0, 0, 0],
-      url: '/Top.png',
+      image: 'Images/Top.png',
       page: '/top',
     },
     // Left
     {
       position: [-1.0, 0, 2.0],
       rotation: [0, Math.PI / 4, 0],
-      url: '/Work.png',
+      image: 'Images/Work.png',
       page: '/work',
     },
     {
       position: [-2, 0, 2.75],
       rotation: [0, Math.PI / 2.5, 0],
-      url: pexel(358574),
+      image: 'Images/Bike.png',
       page: '/top',
     },
     // Right
     {
       position: [1.0, 0, 2],
       rotation: [0, -Math.PI / 4, 0],
-      url: 'App.png',
+      image: 'Images/App.png',
       page: '/iphoneApp',
     },
     {
       position: [2, 0, 2.75],
       rotation: [0, -Math.PI / 2.5, 0],
-      url: '/Skills.png',
-      page: '/top',
+      image: 'Images/Skills.png',
+      page: '/skills',
     },
   ]
 
@@ -54,7 +58,7 @@ const MenuGallary = () => {
         <color attach="background" args={['#AA8']} />
         <fog attach="fog" args={['#AA8', 0, 15]} />
         <group position={[0, -0.5, 0.5]}>
-          <Frames images={images} />
+          <Frames images={menuPanels} />
           <mesh rotation={[-Math.PI / 2, 0, 0]}>
             <planeGeometry args={[50, 50]} />
             <MeshReflectorMaterial
