@@ -1,4 +1,4 @@
-import { Environment, MeshReflectorMaterial } from '@react-three/drei'
+import { /*Environment, */ MeshReflectorMaterial } from '@react-three/drei'
 import { Canvas } from '@react-three/fiber'
 import { useEffect, useState } from 'react'
 import Frames from './Frames'
@@ -76,7 +76,7 @@ const MenuGallary = () => {
             />
           </mesh>
         </group>
-        <Environment preset="city" />
+        {/* <Environment preset="city" /> */}
       </Canvas>
     </div>
   )
